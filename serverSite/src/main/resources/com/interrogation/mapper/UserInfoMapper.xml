@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.interrogation.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.interrogation.pojo.entity.UserInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="head_img" jdbcType="VARCHAR" property="headImg" />
+    <result column="role" jdbcType="INTEGER" property="role" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIME" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertUser" parameterType="com.interrogation.pojo.entity.UserInfo">
+    insert into user_info (id, age,
+      sex, user_phone, password,salt,address,
+      nick_name, head_img,
+      create_time, update_time)
+    values (#{id}, #{age}, #{sex},
+      #{userPhone},#{password},#{salt},#{address},
+      #{nickName}, #{headImg},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIME})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.interrogation.pojo.entity.UserInfo">
+    update user_info
+    set age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=CHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      role = #{role,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIME}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, age, sex, user_phone, address, nick_name, head_img, role, create_time,
+    update_time
+    from user_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, age, sex, user_phone, address, nick_name, head_img, role, create_time,
+    update_time
+    from user_info
+  </select>
+
+  <select id="countNumber" resultType="java.lang.Integer">
+    select count(user_phone)
+    from user_info
+    where user_phone = #{number}
+  </select>
+  <select id="selectUserByUserPhone" resultType="com.interrogation.pojo.entity.UserInfo">
+        select id,age,sex,user_phone,password,salt,address,nick_name,head_img,role,create_time,update_time
+        from user_info
+        where user_phone = #{userPhone}
+  </select>
+</mapper>
