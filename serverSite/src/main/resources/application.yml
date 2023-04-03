@@ -14,7 +14,7 @@ spring:
 
 #redis配置
   redis:
-    host: 192.168.43.239
+    host: 
     port: 6379
     password:
     timeout: 5000ms #最大等待时间
