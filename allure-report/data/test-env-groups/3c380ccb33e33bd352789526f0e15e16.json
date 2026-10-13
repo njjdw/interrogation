@@ -1,1 +1,0 @@
-{"id":"3c380ccb33e33bd352789526f0e15e16","fullName":"api.test_userinfo.TestUserInfo#test_checktoken_with_login_token","name":"test_checktoken_with_login_token[token请求头有效（登录成功后提取的token）]","status":"skipped","testResultsByEnv":{"default":"c79c44488695ca3e3ba0a27292d87c17"}}

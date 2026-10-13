@@ -1,1 +1,0 @@
-{"id":"6f19efcb87be0d953f6c53f65f8f323a","fullName":"api.test_userinfo.TestUserInfo#test_get_sms_code","name":"test_get_sms_code[注册-未填写用户手机号，获取验证码]","status":"failed","testResultsByEnv":{"default":"1800a6ee0e885defb349d76a8804d9cc"}}
